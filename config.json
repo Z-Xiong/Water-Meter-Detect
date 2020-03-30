@@ -1,16 +1,16 @@
 {
-    "name": "Mnist_LeNet",
+    "name": "Water-Meter-Detect",
     "n_gpu": 1,
 
     "arch": {
-        "type": "MnistModel",
+        "type": "YOLOModel",
         "args": {}
     },
     "data_loader": {
-        "type": "MnistDataLoader",
+        "type": "WaterMeterDataLoader",
         "args":{
-            "data_dir": "data/",
-            "batch_size": 128,
+            "data_dir": "./data/",
+            "batch_size": 16,
             "shuffle": true,
             "validation_split": 0.1,
             "num_workers": 2
@@ -24,9 +24,9 @@
             "amsgrad": true
         }
     },
-    "loss": "nll_loss",
+    "loss": "yolo_loss",
     "metrics": [
-        "accuracy", "top_k_acc"
+        "accuracy"
     ],
     "lr_scheduler": {
         "type": "StepLR",
@@ -38,7 +38,7 @@
     "trainer": {
         "epochs": 100,
 
-        "save_dir": "saved/",
+        "save_dir": "./saved/",
         "save_period": 1,
         "verbosity": 2,
         

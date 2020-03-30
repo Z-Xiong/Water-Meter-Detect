@@ -106,6 +106,7 @@ class BaseTrainer:
         setup GPU device if available, move model into configured device
         """
         n_gpu = torch.cuda.device_count()
+        print(torch.cuda.device_count())
         if n_gpu_use > 0 and n_gpu == 0:
             self.logger.warning("Warning: There\'s no GPU available on this machine,"
                                 "training will be performed on CPU.")
@@ -169,3 +170,5 @@ class BaseTrainer:
             self.optimizer.load_state_dict(checkpoint['optimizer'])
 
         self.logger.info("Checkpoint loaded. Resume training from epoch {}".format(self.start_epoch))
+
+print(torch.cuda.device_count())
